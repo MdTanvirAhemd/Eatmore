@@ -9,9 +9,12 @@
         <entry key="..\:/my_application/Eatmore/app/src/main/res/drawable/ic_google.xml" value="0.19722222222222222" />
         <entry key="..\:/my_application/Eatmore/app/src/main/res/drawable/ic_twitter.xml" value="0.25104166666666666" />
         <entry key="..\:/my_application/Eatmore/app/src/main/res/drawable/launcher.xml" value="0.26666666666666666" />
+        <entry key="..\:/my_application/Eatmore/app/src/main/res/drawable/rounded_shape.xml" value="0.22291666666666668" />
         <entry key="..\:/my_application/Eatmore/app/src/main/res/drawable/text_selected.xml" value="0.2703125" />
         <entry key="..\:/my_application/Eatmore/app/src/main/res/drawable/text_unselected.xml" value="0.2703125" />
+        <entry key="..\:/my_application/Eatmore/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/my_application/Eatmore/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/my_application/Eatmore/app/src/main/res/layout/category_view_holder.xml" value="0.20677083333333332" />
       </map>
     </option>
   </component>
