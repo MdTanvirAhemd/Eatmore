@@ -23,10 +23,12 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
     List<FoodCategory> data;
     Context context;
     int selectedItemPos = 0;
+    OnCategoryClickedListener listener;
 
-    public FoodCategoryAdapter(List<FoodCategory> data, Context context) {
+    public FoodCategoryAdapter(List<FoodCategory> data, Context context, OnCategoryClickedListener listener) {
         this.data = data;
         this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -84,9 +86,16 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
                 @Override
                 public void onClick(View v) {
                     selectedItemPos = getAdapterPosition();
+                    if (listener != null) {
+                        listener.onCategoryClick(getAdapterPosition());
+                    }
                     notifyDataSetChanged();
                 }
             });
         }
+    }
+
+    public interface OnCategoryClickedListener {
+        void onCategoryClick(int position);
     }
 }

@@ -1,13 +1,16 @@
 package com.ahmed.eatmore;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.FoodHolder> {
 
     List<FoodItem> data;
+    int selectedFoodItemPos = 0;
 
     public FoodItemAdapter(List<FoodItem> data) {
         this.data = data;
@@ -35,6 +39,20 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.FoodHo
         holder.imgFood.setImageResource(data.get(position).getImage());
         holder.ratingBar.setRating(data.get(position).getRating());
 
+        if (selectedFoodItemPos == position) {
+            holder.txtName.setTextColor(Color.WHITE);
+            holder.txtPrice.setTextColor(Color.WHITE);
+            holder.cardView.animate().scaleX(1.1f);
+            holder.cardView.animate().scaleY(1.1f);
+            holder.ll.setBackgroundResource(R.drawable.launcher_image);
+        }else {
+            holder.txtName.setTextColor(Color.BLACK);
+            holder.txtPrice.setTextColor(Color.BLACK);
+            holder.cardView.animate().scaleX(1f);
+            holder.cardView.animate().scaleY(1f);
+            holder.ll.setBackgroundResource(R.color.white);
+        }
+
     }
 
     @Override
@@ -47,6 +65,8 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.FoodHo
         ImageView imgFood;
         TextView txtPrice, txtName;
         RatingBar ratingBar;
+        CardView cardView;
+        LinearLayout ll;
 
         public FoodHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +74,16 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.FoodHo
             txtPrice = itemView.findViewById(R.id.txt_price);
             ratingBar = itemView.findViewById(R.id.rating);
             imgFood = itemView.findViewById(R.id.food_img);
+            ll = itemView.findViewById(R.id.ll_background);
+            cardView = itemView.findViewById(R.id.food_card);
+
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectedFoodItemPos=getAdapterPosition();
+                    notifyDataSetChanged();
+                }
+            });
         }
     }
 }
